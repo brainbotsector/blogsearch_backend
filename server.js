@@ -8,7 +8,18 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-    origin: process.env.FRONTEND_URL || '*',  // Use environment variable for frontend URL
+    origin: function(origin, callback) {
+        // Allow both with and without trailing slash
+        const allowedOrigins = [
+            'https://blogsearch-frontend.vercel.app', // No trailing slash
+            'https://blogsearch-frontend.vercel.app/' // With trailing slash
+        ];
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: ['GET', 'POST'],
 }));
 
