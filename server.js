@@ -8,7 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-    origin: 'https://blog-search-three.vercel.app/', // Frontend deployment URL
+    origin: 'https://blog-search-b13dhb134-brainbotsectors-projects.vercel.app/', // Frontend deployment URL
     methods: ['GET', 'POST'],
 }));
 
