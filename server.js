@@ -7,7 +7,11 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors()); // Enable CORS
+app.use(cors({
+    origin: 'https://blogsearch-frontend.vercel.app', // Frontend deployment URL
+    methods: ['GET', 'POST'],
+}));
+
 app.use(express.json());
 
 // Set Faker locale to English
