@@ -7,10 +7,12 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const cors = require('cors');
 app.use(cors({
-    origin: 'https://blogsearch-frontend-onhoy7cdw-brainbotsectors-projects.vercel.app/', // Frontend deployment URL (without trailing slash)
+    origin: process.env.FRONTEND_URL || '*',  // Use environment variable for frontend URL
     methods: ['GET', 'POST'],
 }));
+
 
 app.use(express.json());
 
